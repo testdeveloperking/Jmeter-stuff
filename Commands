@@ -1,0 +1,33 @@
+mvn --settings settings.xml -U -e clean compile assembly:single deploy -Dmaven.test.skip=true
+
+
+jmeter.bat -Jusers=1 -Jiterations=1 -Jrampup=1 -Jjmeter.save.saveservice.samplerData=true -Jjmeter.save.saveservice.response_data=true -Jjmeter.save.saveservice.output_format=xml -n -t C:\Users\<>\Desktop\TechnicalStuff\JMeter\jmeter-custom-junit-sampler\data\JavaRequest.jmx -l C:\Users\1531411\Desktop\TechnicalStuff\JMeter\jmeter-custom-junit-sampler\data\testresults-1-user-1-itr.jtl
+
+
+#! /bin/sh
+JVM_ARGS="-Xms512m -Xmx2g"
+echo "Running for Users:$1"
+echiio "Number of Iterations:$2"
+echo "Rampup Time:$3"
+echo "Test Results are saved here:$PWD/testresults-till-edmi.jtl"
+echo "Deleting the result file"
+rm ./testresults-till-edmi.jtl
+rm -R target
+sh $PWD/apache-jmeter-3.2/bin/jmeter.sh -Jusers=$1 -Jiterations=$2 -Jrampup=$3 -Jjmeter.save.saveservice.samplerData=true -Jjmeter.save.saveservice.response_data=true -Jjmeter.save.saveservice.output_format=xml -n -t $PWD/Custom_Java_Sampler_Upto_Pricing.jmx -l $PWD/testresults-pricing.jtl
+
+
+
+
+jmeter.bat -Jusers=1 -Jiterations=2 -Jrampup=1 -n -t perfTest-new.jmx -l testresults.jtl
+jmeter.bat -Jusers=2 -Jiterations=2 -Jrampup=2 -n -t C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\perfTest-new.jmx -l C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\testresults-5-user-5-itr.jtl > C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\output.log
+
+
+jmeter.bat -Jusers=1 -Jiterations=1 -Jrampup=1 -n -t C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\perfTest-new.jmx -l C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\testresults-5-user-5-itr.jtl
+
+jmeter.bat -Jusers=1 -Jiterations=1 -Jrampup=1 -Jjmeter.save.saveservice.samplerData=true -Jjmeter.save.saveservice.response_data=true -Jjmeter.save.saveservice.output_format=xml -n -t C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\Blade-Vanilla-PerfTest.jmx -l C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\testresults-1-user-1-itr.jtl
+
+
+jmeter.bat -Jusers=1 -Jiterations=1 -Jrampup=1 -Jjmeter.save.saveservice.samplerData=true -Jjmeter.save.saveservice.response_data=true -Jjmeter.save.saveservice.output_format=xml -n -t C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\Blade-Vanilla-Till-Murex-PerfTest.jmx -l C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\testresults-murex.jtl
+
+cd C:\Users\<>\Desktop\TechnicalStuff\JMeter\Raw-Jmeter\apache-jmeter-3.2\bin
+JMeterPluginsCMD.bat --generate-csv C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\Results\aggregateResults.csv --input-jtl C:\Users\<>\Desktop\TechnicalStuff\SABREAutomation\Pricing_Team\Blade\genie-plugin\DTP-Repo\dtp-blade-genie-plugin\src\test\resources\jmeter\Results\testresults-till-execution-10-100-5.jtl --plugin-type AggregateReport
